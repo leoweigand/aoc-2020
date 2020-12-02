@@ -9,7 +9,7 @@ export function isValidPassword(line: string) {
   return letterCount >= Number(min) && letterCount <= Number(max)
 }
 
-export default async function getResult() {
-  const lines = await readLines('input.txt');
+export default function getResult() {
+  const lines = readLines('input.txt');
   return lines.reduce((count, line) => isValidPassword(line) ? count + 1 : count, 0)
 }
