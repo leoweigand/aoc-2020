@@ -1,25 +1,39 @@
 import readLines from '../helpers/readLines.ts';
 
+const parseLine = (line: string) =>
+  (line.match(/(\d+)-(\d+) (\w): (\w+)/) ?? []).slice(1);
+
 export function isValidPassword1(line: string) {
-  const [, min, max, letter, password] = line.match(/(\d+)-(\d+) (\w): (\w+)/) ?? [];
+  const [min, max, letter, password] = parseLine(line);
+
   const letterCount = password
     .split('')
     .reduce((count, current) => (letter === current ? count + 1 : count), 0);
 
-  return letterCount >= Number(min) && letterCount <= Number(max)
+  return letterCount >= Number(min) && letterCount <= Number(max);
 }
 
 export function isValidPassword2(line: string) {
-  const [, pos1, pos2, letter, password] = line.match(/(\d+)-(\d+) (\w): (\w+)/) ?? [];
-  return (password.charAt(Number(pos1) - 1) === letter) !== (password.charAt(Number(pos2) - 1) === letter)
+  const [pos1, pos2, letter, password] = parseLine(line);
+
+  return (
+    (password.charAt(Number(pos1) - 1) === letter) !==
+    (password.charAt(Number(pos2) - 1) === letter)
+  );
 }
 
-export function getResult1() {
+export function part1() {
   const lines = readLines('input.txt');
-  return lines.reduce((count, line) => isValidPassword1(line) ? count + 1 : count, 0)
+  return lines.reduce(
+    (count, line) => (isValidPassword1(line) ? count + 1 : count),
+    0,
+  );
 }
 
-export function getResult2() {
+export function part2() {
   const lines = readLines('input.txt');
-  return lines.reduce((count, line) => isValidPassword2(line) ? count + 1 : count, 0)
+  return lines.reduce(
+    (count, line) => (isValidPassword2(line) ? count + 1 : count),
+    0,
+  );
 }
