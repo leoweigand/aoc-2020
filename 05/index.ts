@@ -8,7 +8,7 @@ const calculatePosition = (positions: boolean[], length: number) =>
     Array.from({length: length}, (_, i) => i),
   )[0];
 
-const calculateSeat = (seat: string) => {
+const seatID = (seat: string) => {
   const rows = seat
     .slice(0, 7)
     .split('')
@@ -25,8 +25,8 @@ export function part1(input: string) {
   const boardingPasses = input.split('\n');
 
   let highestSeat = 0;
-  for (let boardingPass of boardingPasses) {
-    highestSeat = Math.max(highestSeat, calculateSeat(boardingPass));
+  for (let seat of boardingPasses) {
+    highestSeat = Math.max(highestSeat, seatID(seat));
   }
 
   return highestSeat;
