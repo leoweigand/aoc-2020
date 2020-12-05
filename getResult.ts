@@ -14,7 +14,7 @@ try {
   const func = 'part' + Number(part);
 
   const result = script[func](input);
-  console.log(result);
+  console.log('Result:', result);
 } catch (error) {
   console.error('Error running script: ', error);
   Deno.exit(1);
