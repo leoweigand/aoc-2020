@@ -1,5 +1,3 @@
-import * as path from 'https://deno.land/std/path/mod.ts';
-
 export function parseDocuments(batch: string) {
   const rawDocuments = batch.split('\n\n');
   const documents = rawDocuments
@@ -27,10 +25,7 @@ export function isValidDocument(document: object) {
   return true;
 }
 
-export function part1() {
-  const input = Deno.readTextFileSync(
-    path.resolve(import.meta.url.slice(5), '../input.txt'),
-  );
+export function part1(input: string) {
   const documents = parseDocuments(input);
 
   return documents.reduce(

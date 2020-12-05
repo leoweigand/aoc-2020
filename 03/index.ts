@@ -1,9 +1,6 @@
-import readLines from '../helpers/readLines.ts';
+const splitLines = (input: string) => input.split('\n');
 
-const slopes = [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]];
-
-export function countTrees(offsetX: number, offsetY: number) {
-  const lines = readLines('input.txt');
+export function countTrees(lines: string[], offsetX: number, offsetY: number) {
   let x = 0;
   let treeCount = 0;
 
@@ -18,13 +15,16 @@ export function countTrees(offsetX: number, offsetY: number) {
   return treeCount;
 }
 
-export function part1() {
-  return countTrees(slopes[1][0], slopes[1][1]);
+export function part1(input: string) {
+  return countTrees(splitLines(input), 3, 1);
 }
 
-export function part2() {
+export function part2(input: string) {
+  const lines = splitLines(input);
+  const slopes = [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]];
+
   return slopes.reduce(
-    (total, slope) => total * countTrees(slope[0], slope[1]),
+    (total, slope) => total * countTrees(lines, slope[0], slope[1]),
     1,
   );
 }
