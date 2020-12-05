@@ -3,12 +3,8 @@
 My solutions for [Advent of Code](http://adventofcode.com/) 2020 in JavaScript and [Deno](https://deno.land/). I am using TypeScript files but only add types if the TS compiler asks to add them. I try to solve the puzzles without any dependencies other than the Deno [standard library](https://deno.land/std/).
 
 ```sh
-# Run puzzles
-deno run --allow-read getResults.ts 03 part1
-
-# Install puzzle runner as script
-deno install --allow-read -n aoc getResults.ts
-aoc 03 part1 # run installed script
+# Get result for day three, part one
+deno run --allow-read getResult.ts 03 01
 ```
 
 ## License
